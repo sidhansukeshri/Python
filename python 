@@ -1,0 +1,159 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 33,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "SxSv0lA-21l5",
+        "outputId": "bdd0a54f-60a9-4587-9c16-faa6f1070c69"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "YES! We have a match!\n",
+            "\n",
+            "Occurences of 'ai': ['ai', 'ai']\n",
+            "\n",
+            " []\n"
+          ]
+        }
+      ],
+      "source": [
+        "import re\n",
+        "#Check if string starts with \"The\" and ends with \"Spain\"\n",
+        "txt=\"The rain in Spain\"\n",
+        "x=re.search(\"^The.*Spain$\",txt)\n",
+        "if x:\n",
+        "  print(\"YES! We have a match!\")\n",
+        "else:\n",
+        "  print(\"No match\")\n",
+        "\n",
+        "#Occurences \"ai\"\n",
+        "txt = \"The rain in Spain\"\n",
+        "x = re.findall(\"ai\", txt)\n",
+        "print(\"\\nOccurences of 'ai':\",x)\n",
+        "\n",
+        "#Find Portugal\n",
+        "txt = \"The rain in Spain\"\n",
+        "x = re.findall(\"Portugal\", txt)\n",
+        "print(\"\\n\",x)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "text = \"The cat sat on the mat. The dog barked at the cat. Cats and dogs live in harmony.\"\n",
+        "x=re.findall(\"cat|dog\",text,re.IGNORECASE)\n",
+        "print(x)\n",
+        "\n",
+        "x=re.findall(r'\\bc\\w{2}\\b',text)\n",
+        "print(x)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "XlzLFTY26cge",
+        "outputId": "25ffef04-1e4f-4c98-a580-5d43dfea57e8"
+      },
+      "execution_count": 28,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['cat', 'dog', 'cat', 'Cat', 'dog']\n",
+            "['cat', 'cat']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "text = \"\"\"\n",
+        "Contact us at support@example.com, sales@company.org, or admin@website.net.\n",
+        "For more information, visit www.example.com.\n",
+        "\"\"\"\n",
+        "email_pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}'\n",
+        "emails = re.findall(email_pattern, text)\n",
+        "print(emails)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "hRhMZ5Oy-kk6",
+        "outputId": "98db3a47-f4ed-4163-a288-9d6995c4fe24"
+      },
+      "execution_count": 38,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['support@example.com', 'sales@company.org', 'admin@website.net']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#First white space\n",
+        "txt = \"The rain in Spain\"\n",
+        "x = re.search(\"\\s\", txt)\n",
+        "print(\"\\nThe first white-space character is located in position:\",x.start())\n",
+        "\n",
+        "#Split at every white space\n",
+        "txt = \"The rain in Spain\"\n",
+        "x = re.split(\"\\s\", txt)\n",
+        "print(\"\\n\",x)\n",
+        "\n",
+        "txt = \"Ghachar Ghachar, Mattar Mattar\"\n",
+        "x = re.search(r\"\\bM\\w+\", txt)\n",
+        "print(x.span())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "TfpIs3OjCGnC",
+        "outputId": "272ba13f-95a2-44b7-cdcf-7e69fb385ed6"
+      },
+      "execution_count": 36,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "The first white-space character is located in position: 3\n",
+            "\n",
+            " ['The', 'rain', 'in', 'Spain']\n",
+            "(17, 23)\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
